@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="{{ url_for("static", filename="images/favicon.png") }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/menu.css") }}">
+  <title>YL Gaming</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li class="h"><a href="http://127.0.0.1:8080/" class="header_link">Главная</a></li>
+        <li class="h"><a href="http://127.0.0.1:8080/news" class="header_link">Новости</a></li>
+        <li class="h"><a href="http://127.0.0.1:8080/projects" class="header_link">Проекты</a></li>
+        <li class="h"><a href="mailto:serebr911-1@yandex.ru" class="header_link" target="_blank">Обратная связь</a></li>
+        <li class="h"><a href="s" class="header_link"></a></li>
+      </ul>
+    </nav>
+      <aside>
+        <a class="profile_logo" href="s"><img src="../static/images/profile.jpg" alt="" height="50"></a>
+      </aside>
+  </header>
+  <!-- Begin page content -->
+  {%block content%}{%endblock%}
+</body>
+</html>

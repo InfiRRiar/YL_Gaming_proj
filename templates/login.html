@@ -1,0 +1,17 @@
+{%extends "menu.html"%}
+{% block content %}
+<div class="login_boxes">
+  <div class="login_block">
+      {{ form.username.label() }}
+      {{ form.username(class="input_login_box")}}
+  </div>
+  <div class="login_block">
+    {{ form.password.label() }}
+    {{ form.password(class="input_login_box")}}
+  </div>
+  <div class="login_block">
+    {{form.submit(class="login_submit")}}
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,130 @@
+body{
+  font-family: Helvetica;
+  margin: 0;
+  background: #F5F5F5;
+}
+header{
+  height: 50px;
+  color: white;
+  background-color: black;
+}
+ul{
+  margin: 0;
+  padding-top: 15px;
+  width: 80%;
+}
+li.h{
+  height: 50px;
+  font-size: 20px;
+  display: inline;
+}
+a.header_link{
+  height: 15px;
+  border: 10px solid black;
+  color: white;
+  text-decoration: none;
+}
+a.header_link:hover{
+  color: #c0c0c0;
+}
+li.profile{
+  display: inline;
+  height: 50px;
+  margin-top: 0;
+}
+nav{
+  height: 50px;
+  width: 65%;
+  display: inline-block;
+}
+aside{
+  height: 50px;
+  display: inline-block;
+  float: right;
+}
+div.main_content{
+  width: 65%;
+  height: 89vh;
+  margin-left: 5%;
+}
+p{
+  margin-left: 3%;
+}
+div.news_block{
+  background-color: white;
+  word-break:break-all;
+  margin: 0 auto;
+  margin-top: 20px;
+  border: 1px solid black;
+  border-radius: 15px;
+  height: 25vh;
+  width: 65vw;
+}
+h1.news_title{
+  margin-top: 1vh;
+  margin-left: 3%;
+  border-bottom: 1px solid black;
+}
+p.news_text{
+  text-indent: 1%;
+}
+h3.read_more_title{
+  text-align: center;
+  color: black;
+}
+a.read_more{
+  text-decoration: none;
+}
+div.project_blocks{
+  margin: 0 auto;
+  width: 50vw;
+}
+div.project_content_block{
+  word-break:break-all;
+  background-color: white;
+  height: 40vh;
+  width: 14vw;
+  border: 2px solid black;
+  border-radius: 40px;
+  margin-top: 5vh;
+  margin-left: 2vh;
+  margin-right: 2vh;
+  display: inline-block;
+}
+h3.project_title{
+  margin: 5px auto;
+  text-align: center;
+  margin-bottom: 0;
+}
+hr{
+  border: none;
+  margin: 0;
+  height: 1px;
+  background-color: black;
+}
+div.login_boxes{
+  width: 20vw;
+  height: 30vh;
+  margin: auto;
+  padding: 2vw;
+  margin-top: 20vh;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+div.login_block{
+  margin: auto;
+}
+input.input_login_box{
+  height: 5vh;
+  box-sizing: border-box;
+  background-color: #fefcaf;
+  box-shadow: none;
+  width: 100%;
+  margin: auto;
+  padding: 5px;
+  margin-bottom: 2vh;
+  margin-top: 1vh;
+  border: 1px solid gray;
+  border-radius: 3px;
+}
