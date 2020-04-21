@@ -1,9 +1,19 @@
 from flask import Flask, url_for, request, render_template, json, redirect
-from HTML_classes import LoginForm, RegistrationForm
+from __all_forms import LoginForm, RegistrationForm
 from data import db_session
+from flask_login import LoginManager, login_user
+from data.users import User
 
 app = Flask(__name__)
+login_manager = LoginManager()
+login_manager.init_app(app)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    session = db_session.create_session()
+    return session.query(User).get(user_id)
 
 
 @app.route('/')
@@ -35,7 +45,14 @@ def profile_page():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        return redirect('/success')
+        session = db_session.create_session()
+        user = session.query(User).filter(User.username == form.username.data).first()
+        if user and user.check_password(form.password.data):
+            login_user(user)  # remember_me_button
+            return redirect("/")
+        return render_template('login.html',
+                               message="Неправильный логин или пароль",
+                               form=form)
     return render_template('login.html', form=form)
 
 
@@ -43,8 +60,17 @@ def login():
 def registration():
     form = RegistrationForm()
     if form.validate_on_submit():
-        return redirect('/success')
-    return render_template('registr.html', form=form)
+        session = db_session.create_session()
+        if session.query(User).filter(User.username == form.username.data).first():
+            return render_template('register.html', form=form)
+        user = User(
+            username=form.username.data,
+            discord_tag=form.discord_tag.data)
+        user.set_password(form.password.data)
+        session.add(user)
+        session.commit()
+        return redirect('http://127.0.0.1:8080/')
+    return render_template('register.html', form=form)
 
 
 if __name__ == '__main__':
