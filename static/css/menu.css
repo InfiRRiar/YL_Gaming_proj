@@ -55,7 +55,7 @@ div.news_block{
   word-break:break-all;
   margin: 0 auto;
   margin-top: 20px;
-  border: 1px solid black;
+  border: 1px solid gray;
   border-radius: 15px;
   height: 25vh;
   width: 65vw;
@@ -112,9 +112,6 @@ div.login_boxes{
   border: 1px solid gray;
   border-radius: 5px;
 }
-div.login_block{
-  margin: auto;
-}
 input.input_login_box{
   height: 5vh;
   box-sizing: border-box;
@@ -149,6 +146,7 @@ img.login_form_img{
   margin: auto;
 }
 a.forgot_password_link{
+  margin-top: 1vh;
   font-size: 11px;
   float: right;
   text-decoration: none;
@@ -162,4 +160,37 @@ p.no_account{
 }
 a.no_account{
   text-decoration: none;
+}
+div.registration_boxes{
+  border-radius: 3px;
+  font-size: 14px;
+  box-sizing: border-box;
+  border: 1px solid gray;
+  width: 45vw;
+  height: 50vh;
+  padding: 3vw;
+  padding-top: 3vh;
+  margin: auto;
+}
+input.registr_input{
+  box-sizing: border-box;
+  border: 1px solid gray;
+  border-radius: 3px;
+  padding-left: 3px;
+  font-size: 17px;
+  width: 39vw;
+  margin: auto;
+  margin-top: 0.5vh;
+  margin-bottom: 3vh;
+  height: 5vh;
+}
+input.registr_submit{
+  margin-top: 4vh;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  width: 100%;
+  height: 6vh;
+  background-color: #1074e7;
 }

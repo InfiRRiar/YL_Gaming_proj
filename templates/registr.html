@@ -1,0 +1,26 @@
+{%extends "menu.html"%}
+{% block content %}
+<h1 align="center">Регистрация YL Gaming</h1>
+<form action="" method="post">
+  <div>
+    {{form.hidden_tag()}}
+  </div>
+  <div class="registration_boxes">
+    <div class="registration_block">
+      <b>{{form.username.label()}}</b>
+      {{form.username(class="registr_input", spellcheck="false")}}
+    </div>
+    <div class="registration_block">
+      <b>{{form.discord_tag.label()}}</b>
+      {{form.discord_tag(class="registr_input", spellcheck="false")}}
+    </div>
+    <div class="registration_block">
+      <b>{{form.password.label()}}</b>
+      {{form.password(class="registr_input")}}
+    </div>
+    <div class="registration_block">
+      {{form.submit(class="registr_submit")}}
+    </div>
+  </div>
+</form>
+{% endblock %}

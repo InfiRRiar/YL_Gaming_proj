@@ -1,21 +1,20 @@
 {%extends "menu.html"%}
 {% block content %}
 <img src="/static/images/favicon.png" alt="" class="login_form_img">
-<h2 align="center">Войти в YL Gaming</h2>
-<div class="login_boxes">
-  <div class="login_block">
+<h1 align="center">Войти в YL Gaming</h1>
+<form class="login" action="" method="post" novalidate>
+  <div>
+    {{form.hidden_tag()}}
+  </div>
+  <div class="login_boxes">
       {{ form.username.label() }}
-      {{ form.username(class="input_login_box")}}
+      {{ form.username(class="input_login_box", spellcheck="false")}}
+      {{ form.password.label() }}
+      <a href="#" class="forgot_password_link">Забыли пароль?</a>
+      {{ form.password(class="input_login_box")}}
+      {{form.submit(class="login_submit")}}
+    <p class="no_account">Нет аккаунта? <a href="http://127.0.0.1:8080/registration" class="no_account">Зарегестрироваться</a></p>
   </div>
-  <div class="login_block">
-    {{ form.password.label() }}
-    <a href="#" class="forgot_password_link">Забыли пароль?</a>
-    {{ form.password(class="input_login_box")}}
-  </div>
-  <div class="login_block">
-    {{form.submit(class="login_submit")}}
-  </div>
-  <p class="no_account">Нет аккаунта? <a href="#" class="no_account">Зарегестрироваться</a></p>
-</div>
+</form>
 
 {% endblock %}
