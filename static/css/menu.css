@@ -8,15 +8,22 @@ header{
   color: white;
   background-color: black;
 }
-ul{
+ul.navigation{
   margin: 0;
   padding-top: 15px;
   width: 80%;
 }
-li.h{
+ul.profile_menu{
+  width: 70%;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+li{
   height: 50px;
   font-size: 20px;
-  display: inline;
+  display: inline-block;
 }
 a.header_link{
   height: 15px;
@@ -27,20 +34,36 @@ a.header_link{
 a.header_link:hover{
   color: #c0c0c0;
 }
-li.profile{
-  display: inline;
-  height: 50px;
-  margin-top: 0;
+div.login_profile{
+  width: 100%;
+  margin: 0;
+  float: right;
+}
+a.logout_link{
+  text-decoration: none;
+  color: white;
+}
+div.logout_link{
+  width: max-content;
+  float: right;
+  margin-top: 15px;
+  margin-right: 1vw;
+}
+div.profile_logo{
+  float: right;
 }
 nav{
   height: 50px;
   width: 65%;
   display: inline-block;
+  float: left;
 }
 aside{
+  width: 35%;
+  font-size: 20px;
   height: 50px;
   display: inline-block;
-  float: right;
+  float: right
 }
 div.main_content{
   width: 65%;

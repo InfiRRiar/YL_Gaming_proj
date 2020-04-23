@@ -1,7 +1,7 @@
 from flask import Flask, url_for, request, render_template, json, redirect
 from __all_forms import LoginForm, RegistrationForm
 from data import db_session
-from flask_login import LoginManager, login_user
+from flask_login import LoginManager, login_user, logout_user, login_required
 from data.users import User
 
 app = Flask(__name__)
@@ -71,6 +71,12 @@ def registration():
         session.commit()
         return redirect('http://127.0.0.1:8080/')
     return render_template('register.html', form=form)
+
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect("/")
 
 
 if __name__ == '__main__':
