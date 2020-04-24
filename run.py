@@ -1,13 +1,15 @@
-from flask import Flask, url_for, request, render_template, json, redirect
+from flask import Flask, url_for, request, render_template, json, redirect, abort, session
 from __all_forms import LoginForm, RegistrationForm
 from data import db_session
-from flask_login import LoginManager, login_user, logout_user, login_required
+from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from data.users import User
+import datetime
 
 app = Flask(__name__)
 login_manager = LoginManager()
 login_manager.init_app(app)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
+app.config['PERMANENT_SESSION_LIFETIME'] = datetime.timedelta(hours=12)
 
 
 @login_manager.user_loader
@@ -65,18 +67,47 @@ def registration():
             return render_template('register.html', form=form)
         user = User(
             username=form.username.data,
-            discord_tag=form.discord_tag.data)
+            vk_id=form.vk_id.data)
         user.set_password(form.password.data)
         session.add(user)
         session.commit()
-        return redirect('http://127.0.0.1:8080/')
+        return redirect('/')
     return render_template('register.html', form=form)
+
+
+@app.route('/create')
+@login_required
+def create():
+    if current_user.is_developer:
+        return render_template("create.html")
+    abort(403)
+
+
+@app.route("/create_news")
+@login_required
+def create_news():
+    if current_user.is_developer:
+        return render_template("create_news.html")
+    abort(403)
+
+
+@app.route("/create_project")
+@login_required
+def create_project():
+    if current_user.is_developer:
+        return render_template("create_project.html")
+    abort(403)
 
 
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect("/")
+
+
+@app.errorhandler(403)
+def page_not_found(e):
+    return render_template('error403.html')
 
 
 if __name__ == '__main__':

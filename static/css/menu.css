@@ -65,6 +65,10 @@ aside{
   display: inline-block;
   float: right
 }
+div.header_login_link{
+  float: right;
+  margin-top: 15px;
+}
 div.main_content{
   width: 65%;
   height: 89vh;

@@ -11,6 +11,6 @@ class LoginForm(FlaskForm):
 
 class RegistrationForm(FlaskForm):
     username = StringField('Логин*', validators=[DataRequired()])
-    discord_tag = StringField('Discord tag')  # добавить проверку
+    vk_id = StringField('VK id')  # добавить проверку
     password = PasswordField('Пароль*', validators=[DataRequired()])  # добавить проверку длины пароля
     submit = SubmitField('Регистрация')

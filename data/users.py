@@ -12,7 +12,7 @@ class User(SqlAlchemyBase, UserMixin):
                            primary_key=True, autoincrement=True)
     username = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     hashed_password = sqlalchemy.Column(sqlalchemy.String, nullable=True)
-    discord_tag = sqlalchemy.Column(sqlalchemy.String, default=None)
+    vk_id = sqlalchemy.Column(sqlalchemy.String, default=None)
     created_date = sqlalchemy.Column(sqlalchemy.DateTime,
                                      default=datetime.datetime.now)
     is_developer = sqlalchemy.Column(sqlalchemy.Boolean, default=False)

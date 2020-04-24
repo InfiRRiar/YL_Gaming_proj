@@ -12,10 +12,13 @@
   <header>
     <nav>
       <ul class="navigation">
-        <li class="menu"><a href="http://127.0.0.1:8080/" class="header_link">Главная</a></li>
-        <li class="menu"><a href="http://127.0.0.1:8080/news" class="header_link">Новости</a></li>
-        <li class="menu"><a href="http://127.0.0.1:8080/projects" class="header_link">Проекты</a></li>
+        <li class="menu"><a href="/" class="header_link">Главная</a></li>
+        <li class="menu"><a href="/news" class="header_link">Новости</a></li>
+        <li class="menu"><a href="/projects" class="header_link">Проекты</a></li>
         <li class="menu"><a href="mailto:serebr911-1@yandex.ru" class="header_link" target="_blank">Обратная связь</a></li>
+        {%if current_user.is_developer%}
+          <li class="menu"><a href="" class="header_link">Добавить</a></li>
+        {%endif%}
       </ul>
     </nav>
       <aside>
@@ -27,13 +30,12 @@
             </a>
           </div>
           <div class="logout_link">
-            <a href="http://127.0.0.1:8080/logout" class="logout_link">Выйти</a>
+            <a href="/logout" class="logout_link">Выйти</a>
           </div>
-
         </div>
         {% else %}
         <div class="header_login_link">
-          <a href="http://127.0.0.1:8080/login" class="header_link">Войти</a>
+          <a href="/login" class="header_link">Войти</a>
         </div>
         {% endif %}
       </aside>
