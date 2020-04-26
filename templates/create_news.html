@@ -1,0 +1,26 @@
+{% extends "menu.html"%}
+{%block content%}
+  <h1>Добавить новость</h1>
+  <form  action="" method="post">
+    <div>
+      {{form.hidden_tag()}}
+    </div>
+    <div class="create_news_boxes">
+      <div class="create_news_block">
+        {{form.title.label()}}
+        {{form.title(class="create_news")}}
+      </div>
+      <div class="create_news_block">
+        {{form.content.label()}}
+        <textarea class="create_news" id="news_content" name="content" rows="8" cols="80"></textarea>
+      </div>
+      <div class="create_news_block">
+        {{form.author.label()}}
+        {{form.author(class="create_news", id="create_author")}}
+      </div>
+      <div class="create_news_block">
+        {{form.submit(class="submit_type_1", id="submit_public_news")}}
+      </div>
+    </div>
+  </form>
+{%endblock%}

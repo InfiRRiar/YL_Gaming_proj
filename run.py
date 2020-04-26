@@ -1,8 +1,9 @@
 from flask import Flask, url_for, request, render_template, json, redirect, abort, session
-from __all_forms import LoginForm, RegistrationForm
+from __all_forms import LoginForm, RegistrationForm, CreateNews
 from data import db_session
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from data.users import User
+from data.news import News
 import datetime
 
 app = Flask(__name__)
@@ -83,11 +84,23 @@ def create():
     abort(403)
 
 
-@app.route("/create_news")
+@app.route("/create_news", methods=['GET', 'POST'])
 @login_required
 def create_news():
     if current_user.is_developer:
-        return render_template("create_news.html")
+        form = CreateNews()
+        if form.validate_on_submit():
+            print(request.form['content'])
+            session = db_session.create_session()
+            news = News(
+                title=form.title.data,
+                content=request.form['content'],
+                author=form.author.data
+            )
+            session.add(news)
+            session.commit()
+            return redirect("/create")
+        return render_template("create_news.html", form=form)
     abort(403)
 
 
@@ -110,6 +123,10 @@ def page_not_found(e):
     return render_template('error403.html')
 
 
-if __name__ == '__main__':
+def main():
     db_session.global_init("db/blogs.sqlite")
     app.run(port=8080, host='127.0.0.1')
+
+
+if __name__ == '__main__':
+    main()

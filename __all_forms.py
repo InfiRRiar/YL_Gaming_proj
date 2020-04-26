@@ -14,3 +14,10 @@ class RegistrationForm(FlaskForm):
     vk_id = StringField('VK id')  # добавить проверку
     password = PasswordField('Пароль*', validators=[DataRequired()])  # добавить проверку длины пароля
     submit = SubmitField('Регистрация')
+
+
+class CreateNews(FlaskForm):
+    title = StringField("Заголовок:", validators=[DataRequired()])
+    content = StringField("Текст:", validators=[DataRequired()])
+    author = StringField("Автор:", validators=[DataRequired()])
+    submit = SubmitField('Опубликовать')
