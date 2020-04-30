@@ -1,9 +1,10 @@
 from flask import Flask, url_for, request, render_template, json, redirect, abort, session
-from __all_forms import LoginForm, RegistrationForm, CreateNews
+from __all_forms import LoginForm, RegistrationForm, CreateNews, CreateProject
 from data import db_session
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from data.users import User
 from data.news import News
+from data.projects import Projects
 import datetime
 
 app = Flask(__name__)
@@ -26,12 +27,19 @@ def main_page():
 
 @app.route('/news')
 def news_page():
-    return render_template('news.html')
+    session = db_session.create_session()
+    news = session.query(News)
+    news = news[::-1]
+    for item in news:
+        item.id = str(item.id)
+    return render_template('news.html', news=news)
 
 
 @app.route('/projects')
 def projects_page():
-    return render_template('projects.html')
+    session = db_session.create_session()
+    projects = session.query(Projects)
+    return render_template('projects.html', projects=projects)
 
 
 @app.route('/feedback')
@@ -76,6 +84,18 @@ def registration():
     return render_template('register.html', form=form)
 
 
+@app.route("/news/<int:id>")
+@login_required
+def full_news(id):
+    session = db_session.create_session()
+    news = session.query(News).filter(News.id == id).first()
+    if news:
+        print(1)
+        return redirect("/")
+    else:
+        abort(404)
+
+
 @app.route('/create')
 @login_required
 def create():
@@ -90,7 +110,6 @@ def create_news():
     if current_user.is_developer:
         form = CreateNews()
         if form.validate_on_submit():
-            print(request.form['content'])
             session = db_session.create_session()
             news = News(
                 title=form.title.data,
@@ -104,11 +123,22 @@ def create_news():
     abort(403)
 
 
-@app.route("/create_project")
+@app.route("/create_project", methods=['GET', 'POST'])
 @login_required
 def create_project():
     if current_user.is_developer:
-        return render_template("create_project.html")
+        form = CreateProject()
+        if form.validate_on_submit():
+            session = db_session.create_session()
+            project = Projects(
+                title=form.title.data,
+                content=request.form['content'],
+                download_link=form.download_link.data
+            )
+            session.add(project)
+            session.commit()
+            return redirect("/create")
+        return render_template("create_project.html", form=form)
     abort(403)
 
 

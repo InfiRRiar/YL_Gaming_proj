@@ -109,19 +109,20 @@ a.read_more{
   text-decoration: none;
 }
 div.project_blocks{
-  margin: 0 auto;
+  margin: auto;
   width: 50vw;
 }
 div.project_content_block{
+  vertical-align: top;
   word-break:break-all;
   background-color: white;
   height: 40vh;
   width: 14vw;
   border: 2px solid black;
   border-radius: 20px;
-  margin-top: 5vh;
-  margin-left: 2vh;
-  margin-right: 2vh;
+  margin-top: 2vh;
+  margin-left: 1vh;
+  margin-right: 1vh;
   display: inline-block;
 }
 h3.project_title{
@@ -227,9 +228,6 @@ input.submit_type_1{
   height: 6vh;
   background-color: #1074e7;
 }
-h1.create{
-  text-align: center;
-}
 h2.choose{
   text-align: center;
   color: black;
@@ -263,7 +261,7 @@ div.choose_create_project{
 div.choose_create_project:hover{
   background-color: #E6E6E6;
 }
-.create_news{
+.create{
   height: 5vh;
   width: 25vw;
   font-size: 17px;
@@ -272,12 +270,19 @@ div.choose_create_project:hover{
   padding: 5px;
   box-sizing: border-box;
 }
+textarea.create_news{
+  min-width: 70vw;
+  min-height: 25vh;
+}
 div.create_news_boxes{
   width: 80vw;
   margin: auto;
 }
 div.create_news_block{
   margin-bottom: 3vh;
+}
+p.project_content{
+  display: block;
 }
 #news_content{
   font-size: 15px;
@@ -287,8 +292,11 @@ div.create_news_block{
 #create_author{
   width: 12vw;
 }
-#submit_public_news{
+#submit_public{
   width:30%;
   margin-left: 35%;
   font-size: 17px;
+}
+#create_h1{
+  text-align: center;
 }

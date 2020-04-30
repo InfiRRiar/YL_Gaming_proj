@@ -1,9 +1,12 @@
 {% extends "menu.html" %}
 {% block content %}
 <div class="project_blocks">
+{%for item in projects%}
   <div class="project_content_block">
-    <h3 class="project_title">Clash Royale</h3>
+    <h3 class="project_title">{{item.title}}</h3>
     <hr>
+    <p class="project_content">{{item.content}}</p>
   </div>
+{%endfor%}
 </div>
 {% endblock %}
