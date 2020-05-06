@@ -1,0 +1,22 @@
+{% extends "menu.html" %}
+{% block content %}
+  <h1>{{user.username}}</h1>
+  <div class="profile_main">
+    <div class="profile_info">
+      <p>id профиля: {{user.id}}</p>
+      {% if current_user.is_submit%}
+      <p>Профиль Вконтакте: <span class="green">привязан</span></p>
+      <p>Профиль Вконтакте: https://vk.com/id{{user.vk_id}} <a href="/change_vk" class="change_vk">Сменить</a></p>
+      {%else%}
+      <p>Профиль Вконтакте: <span class="red">не привязан</span></p>
+      <p>Код подтвержения: {{user.submit_code}}, написать <a href="https://vk.com/public194157847" class="bot">боту</a></p>
+      {% endif %}
+      {%if current_user.is_developer%}
+      <p>Статус профиля: <span>Администратор</span></p>
+      {%else%}
+      <p>Статус профиля: <span>Пользователь</span></p>
+      {%endif%}
+      <p><a href="/change_password">Изменить пароль</a></p>
+    </div>
+</div>
+{% endblock %}

@@ -2,9 +2,10 @@ import datetime
 import sqlalchemy
 from .db_session import SqlAlchemyBase
 from flask_login import UserMixin
+from sqlalchemy_serializer import SerializerMixin
 
 
-class Projects(SqlAlchemyBase, UserMixin):
+class Projects(SqlAlchemyBase, UserMixin, SerializerMixin):
     __tablename__ = 'projects'
 
     id = sqlalchemy.Column(sqlalchemy.Integer,

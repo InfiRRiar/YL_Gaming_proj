@@ -3,9 +3,10 @@ import sqlalchemy
 from .db_session import SqlAlchemyBase
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import UserMixin
+from sqlalchemy_serializer import SerializerMixin
 
 
-class User(SqlAlchemyBase, UserMixin):
+class User(SqlAlchemyBase, UserMixin, SerializerMixin):
     __tablename__ = 'users'
 
     id = sqlalchemy.Column(sqlalchemy.Integer,
@@ -15,6 +16,9 @@ class User(SqlAlchemyBase, UserMixin):
     vk_id = sqlalchemy.Column(sqlalchemy.String, default=None)
     created_date = sqlalchemy.Column(sqlalchemy.DateTime,
                                      default=datetime.datetime.now)
+    is_submit = sqlalchemy.Column(sqlalchemy.Boolean, default=False)
+    submit_code = sqlalchemy.Column(sqlalchemy.String)
+    added_games = sqlalchemy.Column(sqlalchemy.String, default="")
     is_developer = sqlalchemy.Column(sqlalchemy.Boolean, default=False)
 
     def set_password(self, password):

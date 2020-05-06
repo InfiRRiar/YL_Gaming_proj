@@ -11,6 +11,14 @@ header{
 h1{
   text-align: center;
 }
+h4{
+  display: inline-block;
+  margin-top: 0;
+}
+a{
+  text-decoration: none;
+  color: blue;
+}
 ul.navigation{
   margin: 0;
   padding-top: 15px;
@@ -81,11 +89,11 @@ div.main_content{
   margin-left: 5%;
 }
 p{
+  word-wrap:break-word;
   margin-left: 3%;
 }
 div.news_block{
   background-color: white;
-  word-break:break-all;
   margin: 0 auto;
   margin-top: 20px;
   border: 1px solid gray;
@@ -97,9 +105,6 @@ h1.news_title{
   margin-top: 1vh;
   margin-left: 3%;
   border-bottom: 1px solid black;
-}
-p.news_text{
-  text-indent: 1%;
 }
 h3.read_more_title{
   text-align: center;
@@ -113,8 +118,8 @@ div.project_blocks{
   width: 50vw;
 }
 div.project_content_block{
+  color: black;
   vertical-align: top;
-  word-break:break-all;
   background-color: white;
   height: 40vh;
   width: 14vw;
@@ -129,6 +134,24 @@ h3.project_title{
   margin: 5px auto;
   text-align: center;
   margin-bottom: 0;
+  word-break: break-all;
+}
+p.project_content{
+  display: block;
+}
+.project_content_block input{
+  display: none;
+}
+.project_content_block:hover input{
+  display: block;
+  width: 80%;
+  height: 10%;
+  margin-left: 10%;
+  margin-top: 45%;
+  justify-content: center;
+}
+.project_content_block:hover p{
+  display: none;
 }
 hr{
   border: none;
@@ -175,7 +198,7 @@ input.login_submit:hover{
   cursor: pointer;
 }
 img.login_form_img{
-  width: 6vw;
+  width: 7vw;
   display: block;
   margin: auto;
 }
@@ -218,7 +241,7 @@ input.registr_input{
   margin-bottom: 3vh;
   height: 5vh;
 }
-input.submit_type_1{
+.submit_type_1{
   margin-top: 4vh;
   cursor: pointer;
   border: none;
@@ -281,16 +304,13 @@ div.create_news_boxes{
 div.create_news_block{
   margin-bottom: 3vh;
 }
-p.project_content{
-  display: block;
-}
 #news_content{
   font-size: 15px;
   width: 100%;
   height: 40vh;
 }
 #create_author{
-  width: 12vw;
+  width: 18vw;
 }
 #submit_public{
   width:30%;
@@ -299,4 +319,100 @@ p.project_content{
 }
 #create_h1{
   text-align: center;
+}
+div.full_news_content{
+  font-size: 18px;
+  margin-top: 5vh;
+  width: 90vw;
+  text-indent: 1%;
+}
+div.full_news_info{
+  margin-left: 7vw;
+  height: 3vh;
+}
+h1.full_news_title{
+  text-align: left;
+  margin-left: 5vw;
+  margin-bottom: 2vh;
+}
+div.confirm_code{
+  margin: 15vh;
+}
+div.confirm{
+  width: 80%;
+  margin: auto;
+}
+div.bot{
+  width: max-content;
+  margin: auto;
+  margin-top: 10vh;
+}
+a.bot{
+  font-size: 3vh;
+  color: black;
+  text-decoration: underline;
+}
+a.bot:hover{
+  color: #595752;
+}
+h1.code{
+  font-size: 7vh;
+}
+div.profile_main{
+  max-width: 50%;
+  margin: auto;
+  margin-top: 7vh;
+  border: 1px solid gray;
+  border-radius: 3px;
+}
+div.profile_info{
+  font-size: 20px;
+  margin: auto;
+}
+.profile_info p{
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+.green{
+  color: green;
+}
+.red{
+  color: red;
+}
+a.change_vk{
+  font-size: 15px;
+}
+.confirm p{
+  text-align: center;
+}
+.registration_block{
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+}
+.message{
+  text-align: center;
+  color: red;
+}
+#submit_reg{
+  margin-top: 0;
+}
+div.change_password_boxes{
+  width: 60%;
+  margin: auto;
+  margin-top: 10vh;
+}
+div.change_password_block{
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+}
+input.change_password_input{
+  box-sizing: border-box;
+  border: 1px solid gray;
+  border-radius: 3px;
+  font-size: 17px;
+  width: 100%;
+  margin: auto;
+  margin-top: 0.5vh;
+  margin-bottom: 3vh;
+  height: 5vh;
 }

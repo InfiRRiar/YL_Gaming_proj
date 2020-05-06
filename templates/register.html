@@ -11,14 +11,11 @@
       {{form.username(class="registr_input", spellcheck="false")}}
     </div>
     <div class="registration_block">
-      <b>{{form.vk_id.label()}}</b>
-      {{form.vk_id(class="registr_input", spellcheck="false")}}
-    </div>
-    <div class="registration_block">
       <b>{{form.password.label()}}</b>
-      {{form.password(class="registr_input")}}
+      {{form.password(class="registr_input", minlength="6")}}
     </div>
-    <div class="registration_block">
+    <div class="message">{{message}}</div>
+    <div class="registration_block" id="submit_reg">
       {{form.submit(class="submit_type_1")}}
     </div>
   </div>

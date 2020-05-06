@@ -2,9 +2,10 @@ import datetime
 import sqlalchemy
 from .db_session import SqlAlchemyBase
 from flask_login import UserMixin
+from sqlalchemy_serializer import SerializerMixin
 
 
-class News(SqlAlchemyBase, UserMixin):
+class News(SqlAlchemyBase, UserMixin, SerializerMixin):
     __tablename__ = 'news'
 
     id = sqlalchemy.Column(sqlalchemy.Integer,

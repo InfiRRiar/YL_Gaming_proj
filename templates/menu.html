@@ -15,7 +15,7 @@
         <li class="menu"><a href="/" class="header_link">Главная</a></li>
         <li class="menu"><a href="/news" class="header_link">Новости</a></li>
         <li class="menu"><a href="/projects" class="header_link">Проекты</a></li>
-        <li class="menu"><a href="mailto:serebr911-1@yandex.ru" class="header_link" target="_blank">Обратная связь</a></li>
+        <li class="menu"><a href="mailto:serebr911-1@yandex.ru" class="header_link" target="_blank">Поддержка</a></li>
         {%if current_user.is_developer%}
           <li class="menu"><a href="/create" class="header_link">Добавить</a></li>
         {%endif%}
@@ -25,7 +25,8 @@
         {% if current_user.is_authenticated %}
         <div class="login_profile">
           <div class="profile_logo">
-            <a href="http://127.0.0.1:8080/">
+            {% set link = "/profile/" + current_user.username %}
+            <a href={{link}}>
               <img src="../static/images/profile.jpg" alt="" height="50">
             </a>
           </div>
