@@ -19,4 +19,15 @@
       <p><a href="/change_password">Изменить пароль</a></p>
     </div>
 </div>
+<h1>Библиотека</h1>
+<div class="library_main">
+    {%for item in games%}
+    <div class="game_block">
+      <p>{{item.title}}</p>
+      {% set link = "/delete_project_lib/" + item.id %}
+      <a href="{{item.download_link}}"><input type="button" name="" value="Скачать (типо)" class="library_button"></a>
+      <a href={{link}}><input type="button" name="" value="Удалить из библиотеки" class="library_button"></a>
+    </div>
+    {%endfor%}
+</div>
 {% endblock %}

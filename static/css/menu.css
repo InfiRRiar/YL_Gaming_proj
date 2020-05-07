@@ -131,10 +131,10 @@ div.project_content_block{
   display: inline-block;
 }
 h3.project_title{
+  word-wrap: break-word;
   margin: 5px auto;
   text-align: center;
   margin-bottom: 0;
-  word-break: break-all;
 }
 p.project_content{
   display: block;
@@ -143,12 +143,12 @@ p.project_content{
   display: none;
 }
 .project_content_block:hover input{
-  display: block;
   width: 80%;
-  height: 10%;
+  height: 15%;
   margin-left: 10%;
-  margin-top: 45%;
   justify-content: center;
+  display: flex;
+  align-items: flex-end;
 }
 .project_content_block:hover p{
   display: none;
@@ -304,22 +304,6 @@ div.create_news_boxes{
 div.create_news_block{
   margin-bottom: 3vh;
 }
-#news_content{
-  font-size: 15px;
-  width: 100%;
-  height: 40vh;
-}
-#create_author{
-  width: 18vw;
-}
-#submit_public{
-  width:30%;
-  margin-left: 35%;
-  font-size: 17px;
-}
-#create_h1{
-  text-align: center;
-}
 div.full_news_content{
   font-size: 18px;
   margin-top: 5vh;
@@ -393,9 +377,6 @@ a.change_vk{
   text-align: center;
   color: red;
 }
-#submit_reg{
-  margin-top: 0;
-}
 div.change_password_boxes{
   width: 60%;
   margin: auto;
@@ -415,4 +396,49 @@ input.change_password_input{
   margin-top: 0.5vh;
   margin-bottom: 3vh;
   height: 5vh;
+}
+div.library_main{
+  max-width: 50%;
+  margin: auto;
+  border: 1px solid gray;
+  border-radius: 3px;
+  margin-top: 7vh;
+  margin-bottom: 2vh;
+}
+div.game_block p {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  font-size: 20px;
+  display: inline-block;
+}
+input.library_button{
+  float: right;
+  margin-top: 5vh;
+  margin-right: 3vw;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  max-width: content;
+  height: 4vh;
+  background-color: #1074e7;
+}
+#news_content{
+  font-size: 15px;
+  width: 100%;
+  height: 40vh;
+}
+#create_author{
+  width: 18vw;
+}
+#submit_public{
+  width:30%;
+  margin-left: 35%;
+  font-size: 17px;
+}
+#create_h1{
+  text-align: center;
+}
+#submit_reg{
+  margin-top: 0;
 }

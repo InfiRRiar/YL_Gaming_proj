@@ -6,11 +6,11 @@
     <h3 class="project_title">{{item.title}}</h3>
     <hr>
     <p class="project_content">{{item.content}}</p>
-    {%if item.id not in added_projects%}
-      {%set link = "delete_project/" + item.id%}
+    {%if item.id in added_projects%}
+      {%set link = "delete_project_lib/" + item.id%}
       <a href={{link}}><input type="button" name="button" value="Убрать из библиотеки" class="submit_type_1"></input></a>
     {%else%}
-      {%set link = "add_project/" + item.id%}
+      {%set link = "add_project_lib/" + item.id%}
       <a href={{link}}><input type="button" name="button" value="Добавить в библиотеку" class="submit_type_1"></input></a>
     {%endif%}
   </div>

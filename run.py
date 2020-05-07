@@ -3,6 +3,7 @@ from flask_restful import reqparse, abort, Api, Resource
 import news_resources
 import projects_resources
 import profile_resources
+import library_recources
 from __all_forms import LoginForm, RegistrationForm, CreateNewsForm, CreateProjectForm, ChangePasswordForm
 from data import db_session
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
@@ -65,30 +66,49 @@ def projects_page():
     return render_template('projects.html', projects=projects, added_projects=added_projects)
 
 
-@app.route('/add_project/<int:id>')
+@app.route('/add_project_lib/<int:id>', methods=['GET', 'POST'])
+@login_required
 def projects_add(id):
-    session = db_session.create_session()
-    if session.query(AddedGames).filter(AddedGames.username == current_user.username, AddedGames.project_name == id).first():
-        return redirect("/projects")
-    game = AddedGames(
-        project_name=id,
-        username=current_user.username
-    )
-    session.add(game)
-    session.commit()
+    post('http://127.0.0.1:8080/api/v2/library', json={
+        "project_name": id,
+        "username": current_user.username
+    })
     return redirect("/projects")
 
 
+@app.route('/delete_project_lib/<int:id>')
+@login_required
+def delete_project(id):
+    session = db_session.create_session()
+    game_id = session.query(AddedGames.id).filter(AddedGames.username == current_user.username,
+                                                  AddedGames.project_name == id).first()
+    delete('http://127.0.0.1:8080/api/v2/library/' + str(game_id[0]))
+    return redirect('/projects')
+
+
 @app.route('/support')
+@login_required
 def feedback_page():
     return render_template('task.html')
 
 
 @app.route('/profile/<string:username>')
+@login_required
 def profile_page(username):
-    if str(current_user.username) == username:
+    if current_user.username == username: # стата появляется только если пользователь хочет посмотреть именно свою
         profile = get('http://127.0.0.1:8080/api/v2/profile/' + username).json()['user']
-        return render_template('profile.html', user=profile)
+        games = get('http://127.0.0.1:8080/api/v2/library').json()['games']
+        user_lib = list()
+        for i in games:
+            if i["username"] == current_user.username:
+                user_lib.append(i["id"])
+        games = list()
+        all_proj = get("http://127.0.0.1:8080/api/v2/projects").json()["projects"]
+        for i in all_proj:
+            if i["id"] in user_lib:
+                i["id"] = str(i["id"])
+                games.append(i)
+        return render_template('profile.html', user=profile, games=games)
     abort(403)
 
 
@@ -107,7 +127,7 @@ def login():
     return render_template('login.html', form=form)
 
 
-@app.route('/registration', methods=['GET', 'POST'])  # API
+@app.route('/registration', methods=['GET', 'POST'])
 def registration():
     form = RegistrationForm()
     if form.validate_on_submit():
@@ -129,6 +149,7 @@ def registration():
 
 
 @app.route('/confirm_vk/<string:name>')
+@login_required
 def confirm(name):
     session = db_session.create_session()
     user = session.query(User.submit_code).filter(User.username == name)
@@ -193,12 +214,14 @@ def change_password():
 
 
 @app.route('/logout')
+@login_required
 def logout():
     logout_user()
     return redirect("/")
 
 
 @app.route('/change_vk')
+@login_required
 def change_vk():
     session = db_session.create_session()
     user = session.query(User).filter(User.username == current_user.username).first()
@@ -230,6 +253,9 @@ def main():
 
     api.add_resource(profile_resources.UserResource, '/api/v2/profile/<string:username>')
 
+    api.add_resource(library_recources.AddedGamesListResource, '/api/v2/library')
+
+    api.add_resource(library_recources.AddedGamesResource, '/api/v2/library/<int:game_id>')
     db_session.global_init("db/blogs.sqlite")
     app.run(port=8080, host='127.0.0.1')
 
