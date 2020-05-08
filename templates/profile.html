@@ -9,7 +9,7 @@
       <p>Профиль Вконтакте: https://vk.com/id{{user.vk_id}} <a href="/change_vk" class="change_vk">Сменить</a></p>
       {%else%}
       <p>Профиль Вконтакте: <span class="red">не привязан</span></p>
-      <p>Код подтвержения: {{user.submit_code}}, написать <a href="https://vk.com/public194157847" class="bot">боту</a></p>
+      <p>Код подтвержения: {{user.submit_code}}, написать <a target="_blank", href="https://vk.com/public194157847" class="bot">боту</a></p>
       {% endif %}
       {%if current_user.is_developer%}
       <p>Статус профиля: <span>Администратор</span></p>

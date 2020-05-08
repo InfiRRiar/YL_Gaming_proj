@@ -34,3 +34,9 @@ class ChangePasswordForm(FlaskForm):
     new_password = PasswordField("Новый пароль:", validators=[DataRequired()])
     repeat_password = PasswordField("Повтор пароля:", validators=[DataRequired()])
     submit = SubmitField('Изменить пароль')
+
+
+class FindErrorForm(FlaskForm):
+    title = StringField("Заголовок:", validators=[DataRequired()])
+    content = StringField("Текст:", validators=[DataRequired()])
+    submit = SubmitField('Отправить сообщение')

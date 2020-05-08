@@ -1,0 +1,8 @@
+{% extends "menu.html" %}
+{% block content %}
+  <h1>{{report.title}}</h1>
+  <p class="report_content">{{report.content}}</p>
+  <h5 class="rep_stat">{{report.created_date}}, {{report.author}}</h5>
+  {%set link = "delete_report/" + report.id%}
+  <p class="report_actions"><a href={{link}}>Удалить</a></p>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "menu.html"%}
+{%block content%}
+<h1>Сообщение об ошибке</h1>
+<p>Если вы столкулись с какой-то проблемой или нашли какую-то ошибку, то
+используйте эту формы для того, чтобы сообщить об этой ошибке разработчикам</p>
+<form action="" method="post">
+  <div>
+    {{form.hidden_tag()}}
+  </div>
+  <div class="support_form">
+    <div class="support_block">
+      {{form.title.label()}}
+      {{form.title(class="supports")}}
+    </div>
+    <div class="support_block">
+      {{form.content.label()}}
+      <textarea class="create" id="textarea_content" name="content" rows="8" cols="80"></textarea>
+    </div>
+    <div class="support_block_submit">
+      {{form.submit(class="submit_type_1")}}
+    </div>
+  </div>
+</form>
+{%endblock%}

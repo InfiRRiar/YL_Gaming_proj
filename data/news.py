@@ -10,8 +10,8 @@ class News(SqlAlchemyBase, UserMixin, SerializerMixin):
 
     id = sqlalchemy.Column(sqlalchemy.Integer,
                            primary_key=True, autoincrement=True)
-    title = sqlalchemy.Column(sqlalchemy.String, nullable=True)
-    content = sqlalchemy.Column(sqlalchemy.String, nullable=True)
-    author = sqlalchemy.Column(sqlalchemy.String, nullable=True)
-    created_date = sqlalchemy.Column(sqlalchemy.DateTime,
+    title = sqlalchemy.Column(sqlalchemy.String, nullable=True)  # заголвок новости
+    content = sqlalchemy.Column(sqlalchemy.String, nullable=True)  # основной текст новости
+    author = sqlalchemy.Column(sqlalchemy.String, nullable=True)  # автор новости
+    created_date = sqlalchemy.Column(sqlalchemy.DateTime,  # дата создания
                                      default=datetime.datetime.now)

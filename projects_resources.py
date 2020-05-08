@@ -28,8 +28,7 @@ class ProjectsListResource(Resource):
     def get(self):
         session = db_session.create_session()
         projects = session.query(Projects).all()
-        return jsonify({'projects': [item.to_dict(
-            only=('title', 'content', 'download_link', 'id')) for item in projects]})
+        return jsonify({'projects': [item.to_dict() for item in projects]})
 
     def post(self):
         args = parser.parse_args()

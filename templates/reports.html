@@ -1,0 +1,9 @@
+{% extends "menu.html" %}
+{% block content %}
+{%for item in reports%}
+{%set link = "full_report/" + item.id%}
+<a href={{link}} class="report_block"><div class="report_block">
+    <h2>{{item.author}}: {{item.title}}</h2>
+  </div></a>
+{%endfor%}
+{%endblock%}

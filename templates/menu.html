@@ -15,9 +15,11 @@
         <li class="menu"><a href="/" class="header_link">Главная</a></li>
         <li class="menu"><a href="/news" class="header_link">Новости</a></li>
         <li class="menu"><a href="/projects" class="header_link">Проекты</a></li>
-        <li class="menu"><a href="mailto:serebr911-1@yandex.ru" class="header_link" target="_blank">Поддержка</a></li>
         {%if current_user.is_developer%}
+          <li class="menu"><a href="/reports" class="header_link">Сообщения об ошибках</a></li>
           <li class="menu"><a href="/create" class="header_link">Добавить</a></li>
+        {%else%}
+          <li class="menu"><a href="/support" class="header_link">Поддержка</a></li>
         {%endif%}
       </ul>
     </nav>
