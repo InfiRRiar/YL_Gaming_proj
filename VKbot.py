@@ -8,8 +8,10 @@ from werkzeug.security import generate_password_hash
 
 
 def main():
+    with open('static/token.txt') as f:
+        token = f.read()
     vk_session = vk_api.VkApi(
-        token="27fb14f84106404a44cf021312a233bffa80516ed7e18e9e497f373de7eb9ec986c5381bd0edf289a6c85")
+        token=token)
 
     longpoll = VkBotLongPoll(vk_session, '194157847')
     for event in longpoll.listen():

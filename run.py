@@ -34,17 +34,6 @@ def main_page():
     return render_template('main.html')
 
 
-@app.route('/news')  # новости
-def news_page():
-    news = get('http://127.0.0.1:8080/api/v2/news').json()['news']  # получение json всех новостей
-    for item in news:
-        item['id'] = str(
-            item['id'])  # чтобы в HTML можно было использовать для создания ссылки, преобразуется в sting каждый id
-        item['content'] = item['content'][:195] + "..."  # нужно, чтобы отображался не весь текст, а первые 195 символов
-    news.reverse()  # реверс всех новостей, чтобы сверху на странице отображались сначала новые новости
-    return render_template('news.html', news=news)
-
-
 @app.route("/news/<int:id>")  # отображение определенной новости
 @login_required  # ее можно посмотреть. только если пользватель вошел в аккаунт
 def full_news(id):
